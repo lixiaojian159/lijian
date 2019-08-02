@@ -930,6 +930,7 @@ class Request
         if (!$this->mergeParam) {
             $method = $this->method(true);
 
+
             // 自动获取请求变量
             switch ($method) {
                 case 'POST':
@@ -945,19 +946,22 @@ class Request
             }
 
             // 当前请求参数和URL地址中的参数合并
+
             $this->param = array_merge($this->param, $this->get(false), $vars, $this->route(false));
 
             $this->mergeParam = true;
         }
 
+
         if (true === $name) {
+
             // 获取包含文件上传信息的数组
             $file = $this->file();
             $data = is_array($file) ? array_merge($this->param, $file) : $this->param;
 
             return $this->input($data, '', $default, $filter);
         }
-
+        
         return $this->input($this->param, $name, $default, $filter);
     }
 
@@ -983,6 +987,7 @@ class Request
      */
     public function route($name = '', $default = null, $filter = '')
     {
+
         return $this->input($this->route, $name, $default, $filter);
     }
 
@@ -1346,6 +1351,7 @@ class Request
      */
     public function input($data = [], $name = '', $default = null, $filter = '')
     {
+
         if (false === $name) {
             // 获取原始数据
             return $data;
